@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class InputError extends Component
 {
     public ?string $message;
+
     public ?string $class;
 
     /**

@@ -34,4 +34,3 @@ class InputGroupPassword extends Component
         );
     }
 }
-

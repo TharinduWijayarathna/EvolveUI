@@ -9,8 +9,11 @@ use Illuminate\View\Component;
 class DropdownItem extends Component
 {
     public ?string $class;
+
     public ?string $href;
+
     public string $method;
+
     public ?array $params;
 
     /**

@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class Separator extends Component
 {
     public string $orientation;
+
     public bool $decorative;
+
     public ?string $class;
 
     /**

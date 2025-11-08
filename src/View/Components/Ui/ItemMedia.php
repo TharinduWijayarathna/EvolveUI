@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class ItemMedia extends Component
 {
     public string $variant;
+
     public ?string $class;
 
     /**

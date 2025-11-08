@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class AvatarImage extends Component
 {
     public $src;
+
     public $alt;
+
     public $class;
 
     /**

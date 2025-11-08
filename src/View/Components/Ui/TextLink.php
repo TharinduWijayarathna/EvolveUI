@@ -9,8 +9,11 @@ use Illuminate\View\Component;
 class TextLink extends Component
 {
     public ?string $href;
+
     public ?string $method;
+
     public ?array $params;
+
     public ?string $class;
 
     /**

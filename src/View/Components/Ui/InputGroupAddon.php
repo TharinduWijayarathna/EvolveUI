@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class InputGroupAddon extends Component
 {
     public string $align;
+
     public ?string $class;
 
     /**

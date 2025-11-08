@@ -9,8 +9,11 @@ use Illuminate\View\Component;
 class Button extends Component
 {
     public string $variant;
+
     public string $size;
+
     public string $tag;
+
     public ?string $class;
 
     /**

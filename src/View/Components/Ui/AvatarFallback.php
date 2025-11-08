@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class AvatarFallback extends Component
 {
     public $name;
+
     public $class;
 
     /**

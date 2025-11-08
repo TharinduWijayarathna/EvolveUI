@@ -9,8 +9,11 @@ use Illuminate\View\Component;
 class InputGroupButton extends Component
 {
     public string $size;
+
     public string $variant;
+
     public string $type;
+
     public ?string $class;
 
     /**

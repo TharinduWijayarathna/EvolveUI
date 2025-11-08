@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class Spinner extends Component
 {
     public $size;
+
     public $class;
 
     /**

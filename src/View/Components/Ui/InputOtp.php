@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class InputOtp extends Component
 {
     public string $name;
+
     public int $length;
+
     public ?string $value;
 
     /**

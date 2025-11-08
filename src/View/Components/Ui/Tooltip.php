@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class Tooltip extends Component
 {
     public ?string $side;
+
     public ?int $sideOffset;
+
     public string $class;
 
     /**
@@ -33,8 +35,8 @@ class Tooltip extends Component
     public function tooltipClasses(): string
     {
         return cn(
-            "z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md",
-            "transition-opacity duration-150 ease-in-out opacity-0 pointer-events-none",
+            'z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md',
+            'transition-opacity duration-150 ease-in-out opacity-0 pointer-events-none',
             $this->class
         );
     }
