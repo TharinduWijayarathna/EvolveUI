@@ -9,10 +9,17 @@
 <aside
     class="fixed inset-y-0 left-0 z-50 w-64 flex flex-col bg-sidebar p-2 transition-transform duration-300 md:translate-x-0 md:flex"
     :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" x-cloak>
-    <x-ui.button tag="a" variant="ghost" :href="route('dashboard')" class="h-8 w-full justify-start">
-        <x-icons.app-logo class="!size-5" />
-        <span class="text-base font-semibold">soshable.</span>
-    </x-ui.button>
+    @if (Route::has('dashboard'))
+        <x-ui.button tag="a" variant="ghost" :href="route('dashboard')" class="h-8 w-full justify-start">
+            <x-icons.app-logo class="!size-5" />
+            <span class="text-base font-semibold">{{ config('app.name', 'App') }}</span>
+        </x-ui.button>
+    @else
+        <div class="h-8 w-full flex items-center justify-start px-2">
+            <x-icons.app-logo class="!size-5" />
+            <span class="text-base font-semibold">{{ config('app.name', 'App') }}</span>
+        </div>
+    @endif
 
     {{-- Nav Links --}}
     <div class="flex flex-1 flex-col gap-4 overflow-auto mt-4">
@@ -68,23 +75,27 @@
             @endphp
 
             @foreach ($sidebarLinks as $link)
-                <li>
-                    <x-ui.button tag="a" variant="ghost" :href="route($link['route'])"
-                        class="h-8 w-full justify-start cursor-default {{ request()->routeIs($link['route']) ? 'bg-accent/50' : '' }}">
-                        <x-dynamic-component :component="'icons.' . $link['icon']" />
-                        {{ $link['label'] }}
-                    </x-ui.button>
-                </li>
+                @if (Route::has($link['route']))
+                    <li>
+                        <x-ui.button tag="a" variant="ghost" :href="route($link['route'])"
+                            class="h-8 w-full justify-start cursor-default {{ request()->routeIs($link['route']) ? 'bg-accent/50' : '' }}">
+                            <x-dynamic-component :component="'icons.' . $link['icon']" />
+                            {{ $link['label'] }}
+                        </x-ui.button>
+                    </li>
+                @endif
             @endforeach
         </ul>
     </div>
 
     {{-- Footer Nav Links --}}
-    <div class="mt-auto">
-        <x-ui.button tag="a" variant="ghost" :href="route('profile.edit')"
-            class="h-8 w-full justify-start cursor-default {{ request()->routeIs('profile.edit') ? 'bg-accent/50' : '' }}">
-            <x-icons.message-circle-more />
-            Support
-        </x-ui.button>
-    </div>
+    @if (Route::has('profile.edit'))
+        <div class="mt-auto">
+            <x-ui.button tag="a" variant="ghost" :href="route('profile.edit')"
+                class="h-8 w-full justify-start cursor-default {{ request()->routeIs('profile.edit') ? 'bg-accent/50' : '' }}">
+                <x-icons.message-circle-more />
+                Support
+            </x-ui.button>
+        </div>
+    @endif
 </aside>
