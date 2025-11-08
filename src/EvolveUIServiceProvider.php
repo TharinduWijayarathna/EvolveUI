@@ -32,7 +32,7 @@ class EvolveUIServiceProvider extends PackageServiceProvider
         // Check if components are installed in app directory
         // If installed, Laravel will auto-discover them from App\View\Components
         // If not installed, register package components as fallback
-        if (!$this->componentsInstalled()) {
+        if (! $this->componentsInstalled()) {
             $this->registerPackageComponents();
         }
     }
