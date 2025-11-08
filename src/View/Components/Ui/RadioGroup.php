@@ -9,8 +9,11 @@ use Illuminate\View\Component;
 class RadioGroup extends Component
 {
     public string $name;
+
     public array $options;
+
     public string $value;
+
     public ?string $class;
 
     public function __construct(
@@ -30,4 +33,3 @@ class RadioGroup extends Component
         return view('evolveui::components.ui.radio-group');
     }
 }
-

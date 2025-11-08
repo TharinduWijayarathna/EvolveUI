@@ -75,7 +75,7 @@ class EvolveUIServiceProvider extends PackageServiceProvider
             'Textarea' => \EvolveUI\EvolveUI\View\Components\Ui\Textarea::class,
             'TextLink' => \EvolveUI\EvolveUI\View\Components\Ui\TextLink::class,
             'Breadcrumb' => \EvolveUI\EvolveUI\View\Components\Ui\Breadcrumb::class,
-            
+
             // Dialog Components
             'Dialog' => \EvolveUI\EvolveUI\View\Components\Ui\Dialog::class,
             'DialogClose' => \EvolveUI\EvolveUI\View\Components\Ui\DialogClose::class,
@@ -86,7 +86,7 @@ class EvolveUIServiceProvider extends PackageServiceProvider
             'DialogOverlay' => \EvolveUI\EvolveUI\View\Components\Ui\DialogOverlay::class,
             'DialogTitle' => \EvolveUI\EvolveUI\View\Components\Ui\DialogTitle::class,
             'DialogTrigger' => \EvolveUI\EvolveUI\View\Components\Ui\DialogTrigger::class,
-            
+
             // Dropdown Components
             'Dropdown' => \EvolveUI\EvolveUI\View\Components\Ui\Dropdown::class,
             'DropdownCheckboxItem' => \EvolveUI\EvolveUI\View\Components\Ui\DropdownCheckboxItem::class,
@@ -100,7 +100,7 @@ class EvolveUIServiceProvider extends PackageServiceProvider
             'DropdownSubContent' => \EvolveUI\EvolveUI\View\Components\Ui\DropdownSubContent::class,
             'DropdownSubTrigger' => \EvolveUI\EvolveUI\View\Components\Ui\DropdownSubTrigger::class,
             'DropdownTrigger' => \EvolveUI\EvolveUI\View\Components\Ui\DropdownTrigger::class,
-            
+
             // Sheet Components
             'Sheet' => \EvolveUI\EvolveUI\View\Components\Ui\Sheet::class,
             'SheetClose' => \EvolveUI\EvolveUI\View\Components\Ui\SheetClose::class,
@@ -109,13 +109,13 @@ class EvolveUIServiceProvider extends PackageServiceProvider
             'SheetHeader' => \EvolveUI\EvolveUI\View\Components\Ui\SheetHeader::class,
             'SheetTitle' => \EvolveUI\EvolveUI\View\Components\Ui\SheetTitle::class,
             'SheetTrigger' => \EvolveUI\EvolveUI\View\Components\Ui\SheetTrigger::class,
-            
+
             // Form Components
             'Checkbox' => \EvolveUI\EvolveUI\View\Components\Ui\Checkbox::class,
             'NativeSelect' => \EvolveUI\EvolveUI\View\Components\Ui\NativeSelect::class,
             'Select' => \EvolveUI\EvolveUI\View\Components\Ui\Select::class,
             'RadioGroup' => \EvolveUI\EvolveUI\View\Components\Ui\RadioGroup::class,
-            
+
             // Table Components
             'Table' => \EvolveUI\EvolveUI\View\Components\Ui\Table::class,
             'TableHeader' => \EvolveUI\EvolveUI\View\Components\Ui\TableHeader::class,
@@ -123,7 +123,7 @@ class EvolveUIServiceProvider extends PackageServiceProvider
             'TableRow' => \EvolveUI\EvolveUI\View\Components\Ui\TableRow::class,
             'TableHead' => \EvolveUI\EvolveUI\View\Components\Ui\TableHead::class,
             'TableCell' => \EvolveUI\EvolveUI\View\Components\Ui\TableCell::class,
-            
+
             // Utility Components
             'Progress' => \EvolveUI\EvolveUI\View\Components\Ui\Progress::class,
             'Spinner' => \EvolveUI\EvolveUI\View\Components\Ui\Spinner::class,

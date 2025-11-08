@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class Progress extends Component
 {
     public int $value;
+
     public ?string $class;
 
     public function __construct(int $value = 0, ?string $class = null)
@@ -22,4 +23,3 @@ class Progress extends Component
         return view('evolveui::components.ui.progress');
     }
 }
-

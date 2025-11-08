@@ -20,4 +20,3 @@ class TableHeader extends Component
         return view('evolveui::components.ui.table-header');
     }
 }
-

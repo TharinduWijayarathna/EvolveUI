@@ -20,4 +20,3 @@ class Select extends Component
         return view('evolveui::components.ui.select');
     }
 }
-

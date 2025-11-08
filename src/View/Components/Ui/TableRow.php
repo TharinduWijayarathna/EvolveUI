@@ -20,4 +20,3 @@ class TableRow extends Component
         return view('evolveui::components.ui.table-row');
     }
 }
-
