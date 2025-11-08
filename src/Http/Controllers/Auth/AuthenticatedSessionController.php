@@ -51,4 +51,3 @@ class AuthenticatedSessionController
         return redirect('/');
     }
 }
-

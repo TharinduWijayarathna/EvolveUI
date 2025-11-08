@@ -43,4 +43,3 @@ class RegisteredUserController
         return redirect('/dashboard');
     }
 }
-

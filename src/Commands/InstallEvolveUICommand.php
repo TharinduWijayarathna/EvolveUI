@@ -37,6 +37,12 @@ class InstallEvolveUICommand extends Command
         // Install helpers
         $this->installHelpers();
 
+        // Check if User model exists
+        $userModelPath = app_path('Models/User.php');
+        if (!File::exists($userModelPath)) {
+            $this->warn('User model not found. Make sure you have a User model with authentication.');
+        }
+
         $this->newLine();
         $this->info('✅ EvolveUI installed successfully!');
         $this->newLine();
@@ -87,14 +93,14 @@ class InstallEvolveUICommand extends Command
         $uiComponents = File::allFiles($source.'/Ui');
         foreach ($uiComponents as $file) {
             $content = File::get($file->getPathname());
-            
+
             // Update namespace
             $content = str_replace(
                 'namespace EvolveUI\\EvolveUI\\View\\Components\\Ui;',
                 'namespace App\\View\\Components\\Ui;',
                 $content
             );
-            
+
             // Update view paths
             $content = preg_replace(
                 "/view\('evolveui::components\.ui\.([^']+)'\)/",
@@ -110,14 +116,14 @@ class InstallEvolveUICommand extends Command
         $layoutComponents = File::allFiles($source.'/Layout');
         foreach ($layoutComponents as $file) {
             $content = File::get($file->getPathname());
-            
+
             // Update namespace
             $content = str_replace(
                 'namespace EvolveUI\\EvolveUI\\View\\Components\\Layout;',
                 'namespace App\\View\\Components\\Layout;',
                 $content
             );
-            
+
             // Update view paths
             $content = preg_replace(
                 "/view\('evolveui::components\.layout\.([^']+)'\)/",
@@ -144,14 +150,14 @@ class InstallEvolveUICommand extends Command
         $controllers = File::allFiles($source.'/Auth');
         foreach ($controllers as $file) {
             $content = File::get($file->getPathname());
-            
+
             // Update namespace
             $content = str_replace(
                 'namespace EvolveUI\\EvolveUI\\Http\\Controllers\\Auth;',
                 'namespace App\\Http\\Controllers\\Auth;',
                 $content
             );
-            
+
             // Update view paths
             $content = preg_replace(
                 "/view\('evolveui::auth\.([^']+)'\)/",
@@ -173,30 +179,44 @@ class InstallEvolveUICommand extends Command
         $source = $this->packagePath.'src/routes/auth.php';
         $destination = $this->basePath.'/routes/auth.php';
 
-        if (File::exists($source)) {
-            $content = File::get($source);
-            
-            // Update controller namespaces
-            $content = str_replace(
-                'EvolveUI\\EvolveUI\\Http\\Controllers\\Auth\\',
-                'App\\Http\\Controllers\\Auth\\',
-                $content
-            );
-
-            File::put($destination, $content);
-
-            // Add require to web.php if not already there
-            $webRoutesPath = $this->basePath.'/routes/web.php';
-            if (File::exists($webRoutesPath)) {
-                $webContent = File::get($webRoutesPath);
-                if (!str_contains($webContent, "require __DIR__.'/auth.php'")) {
-                    $webContent .= "\n\nrequire __DIR__.'/auth.php';\n";
-                    File::put($webRoutesPath, $webContent);
-                }
-            }
+        if (!File::exists($source)) {
+            $this->warn('   ⚠️  Source routes file not found: '.$source);
+            return;
         }
 
-        $this->info('   ✓ Routes installed to routes/auth.php');
+        $content = File::get($source);
+
+        // Update controller namespaces
+        $content = str_replace(
+            'EvolveUI\\EvolveUI\\Http\\Controllers\\Auth\\',
+            'App\\Http\\Controllers\\Auth\\',
+            $content
+        );
+
+        // Write routes file
+        File::put($destination, $content);
+        $this->info('   ✓ Routes file created: routes/auth.php');
+
+        // Add require to web.php
+        $webRoutesPath = $this->basePath.'/routes/web.php';
+        if (File::exists($webRoutesPath)) {
+            $webContent = File::get($webRoutesPath);
+
+            // Check if already included
+            if (str_contains($webContent, "require __DIR__.'/auth.php'") ||
+                str_contains($webContent, "require __DIR__.\"/auth.php\"")) {
+                $this->info('   ✓ Routes already included in routes/web.php');
+            } else {
+                // Add require statement at the end
+                $webContent = rtrim($webContent) . "\n\nrequire __DIR__.'/auth.php';\n";
+                File::put($webRoutesPath, $webContent);
+                $this->info('   ✓ Added require statement to routes/web.php');
+            }
+        } else {
+            $this->warn('   ⚠️  routes/web.php not found. Please manually add: require __DIR__.\'/auth.php\';');
+        }
+
+        $this->info('   ✓ Routes installation complete');
     }
 
     protected function installHelpers(): void
@@ -208,16 +228,16 @@ class InstallEvolveUICommand extends Command
 
         if (File::exists($source)) {
             File::copy($source, $destination);
-            
+
             // Add to composer.json autoload if not exists
             $composerPath = $this->basePath.'/composer.json';
             if (File::exists($composerPath)) {
                 $composer = json_decode(File::get($composerPath), true);
-                
+
                 if (!isset($composer['autoload']['files'])) {
                     $composer['autoload']['files'] = [];
                 }
-                
+
                 if (!in_array('app/helpers.php', $composer['autoload']['files'])) {
                     $composer['autoload']['files'][] = 'app/helpers.php';
                     File::put($composerPath, json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
@@ -242,7 +262,7 @@ class InstallEvolveUICommand extends Command
 
         foreach ($files as $file) {
             $relativePath = str_replace($source.'/', '', $file->getPathname());
-            
+
             // Check if file should be excluded
             $shouldExclude = false;
             foreach ($exclude as $excludePath) {
@@ -258,7 +278,7 @@ class InstallEvolveUICommand extends Command
 
             $destPath = $destination.'/'.$relativePath;
             $destDir = dirname($destPath);
-            
+
             File::ensureDirectoryExists($destDir);
             File::copy($file->getPathname(), $destPath);
         }
