@@ -5,6 +5,7 @@ namespace EvolveUI\EvolveUI;
 use EvolveUI\EvolveUI\Commands\EvolveUICommand;
 use EvolveUI\EvolveUI\Commands\InstallEvolveUICommand;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\File;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -28,10 +29,26 @@ class EvolveUIServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        // Register UI components individually with 'ui' prefix
+        // Check if components are installed in app directory
+        // If installed, Laravel will auto-discover them from App\View\Components
+        // If not installed, register package components as fallback
+        if (!$this->componentsInstalled()) {
+            $this->registerPackageComponents();
+        }
+    }
+
+    protected function componentsInstalled(): bool
+    {
+        return File::exists(app_path('View/Components/Ui/Button.php')) ||
+               File::exists(app_path('View/Components/Layout/App.php'));
+    }
+
+    protected function registerPackageComponents(): void
+    {
+        // Register UI components individually with 'ui' prefix (fallback)
         $this->registerUiComponents();
 
-        // Register Layout components individually with 'layout' prefix
+        // Register Layout components individually with 'layout' prefix (fallback)
         $this->registerLayoutComponents();
     }
 
@@ -152,8 +169,15 @@ class EvolveUIServiceProvider extends PackageServiceProvider
 
     protected function registerAuthRoutes(): void
     {
-        // Automatically load authentication routes
-        // Users can override by publishing routes or modifying web.php
+        // Check if routes are installed in app
+        $appRoutesPath = base_path('routes/auth.php');
+
+        if (File::exists($appRoutesPath)) {
+            // Routes are installed in app, don't load package routes
+            return;
+        }
+
+        // Fallback: Load package routes if not installed
         if (! $this->app->routesAreCached()) {
             $authRoutesPath = __DIR__.'/routes/auth.php';
 

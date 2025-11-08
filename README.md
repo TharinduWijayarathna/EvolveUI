@@ -32,10 +32,17 @@ After installing the package, run the install command:
 php artisan evolveui:install
 ```
 
-This will:
-- ✅ Set up authentication routes automatically
-- ✅ Make all UI components available
-- ✅ Optionally publish views for customization
+This will install everything into your application:
+- ✅ **Views** → `resources/views/` (auth views, components, icons)
+- ✅ **Components** → `app/View/Components/` (all UI and Layout components)
+- ✅ **Controllers** → `app/Http/Controllers/Auth/` (authentication controllers)
+- ✅ **Routes** → `routes/auth.php` (authentication routes)
+- ✅ **Helpers** → `app/helpers.php` (utility functions)
+
+After installation, run:
+```bash
+composer dump-autoload
+```
 
 ### 2. Authentication is Ready!
 
@@ -45,7 +52,7 @@ After installation, you immediately have:
 - **Password Reset**: `/forgot-password` and `/reset-password`
 - **Logout**: POST to `/logout`
 
-All authentication views use the EvolveUI components and are ready to use!
+All files are now in your application directory - customize them as needed!
 
 ### 3. Use Components in Your Views
 
