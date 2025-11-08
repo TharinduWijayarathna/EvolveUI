@@ -1,69 +1,217 @@
-# :package_description
+# EvolveUI
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
----
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
+A beautiful Laravel UI component library inspired by shadcn/ui, featuring a complete set of components for building modern web applications.
 
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-<!--/delete-->
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/evolveui/evolveui.svg?style=flat-square)](https://packagist.org/packages/evolveui/evolveui)
+[![Total Downloads](https://img.shields.io/packagist/dt/evolveui/evolveui.svg?style=flat-square)](https://packagist.org/packages/evolveui/evolveui)
 
-## Support us
+## Features
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+- 🎨 **Beautiful Components**: 100+ shadcn/ui-inspired components
+- 🔐 **Auth Layouts**: Pre-built login/register views with split-screen design
+- 📱 **Responsive**: Mobile-first, fully responsive components
+- 🌙 **Dark Mode**: Built-in dark mode support
+- ⚡ **Blade Components**: Easy-to-use Laravel Blade components
+- 🎯 **Type-Safe**: PHP component classes with type hints
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require evolveui/evolveui
 ```
 
-You can publish and run the migrations with:
+## Quick Start
+
+### 1. Publish Views (Optional)
+
+If you want to customize the views, you can publish them:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
+php artisan vendor:publish --tag="evolveui-views"
 ```
+
+### 2. Use the Auth Layout
+
+The package includes a beautiful split-view authentication layout. Here's how to use it:
+
+**Login View Example:**
+
+```blade
+<x-layout.auth title="Welcome back" description="Sign in to your account" :showSignUpPrompt="true">
+    <form method="POST" action="{{ route('login') }}" class="space-y-4">
+        @csrf
+        <div class="space-y-2">
+            <x-ui.label for="email">Email</x-ui.label>
+            <x-ui.input id="email" type="email" name="email" required />
+        </div>
+        <div class="space-y-2">
+            <x-ui.label for="password">Password</x-ui.label>
+            <x-ui.input id="password" type="password" name="password" required />
+        </div>
+        <x-ui.button type="submit" class="w-full">Sign in</x-ui.button>
+    </form>
+</x-layout.auth>
+```
+
+**Register View Example:**
+
+```blade
+<x-layout.auth title="Create an account" description="Enter your information to get started" :showSignInPrompt="true">
+    <form method="POST" action="{{ route('register') }}" class="space-y-4">
+        @csrf
+        <!-- Your registration form fields -->
+        <x-ui.button type="submit" class="w-full">Create account</x-ui.button>
+    </form>
+</x-layout.auth>
+```
+
+### 3. Use the Dashboard Layout
+
+For authenticated pages, use the app layout with sidebar:
+
+```blade
+<x-layout.app title="Dashboard">
+    <div class="space-y-6">
+        <h1 class="text-2xl font-semibold">Welcome back!</h1>
+        <!-- Your dashboard content -->
+    </div>
+</x-layout.app>
+```
+
+## Available Components
+
+### UI Components
+
+All UI components are prefixed with `x-ui.`:
+
+- **Buttons**: `<x-ui.button>`
+- **Inputs**: `<x-ui.input>`, `<x-ui.textarea>`, `<x-ui.label>`
+- **Cards**: `<x-ui.card>`, `<x-ui.card-header>`, `<x-ui.card-content>`, etc.
+- **Dialogs**: `<x-ui.dialog>`, `<x-ui.dialog-trigger>`, `<x-ui.dialog-content>`, etc.
+- **Dropdowns**: `<x-ui.dropdown>`, `<x-ui.dropdown-trigger>`, `<x-ui.dropdown-item>`, etc.
+- **Avatars**: `<x-ui.avatar>`, `<x-ui.avatar-image>`, `<x-ui.avatar-fallback>`
+- **Badges**: `<x-ui.badge>`
+- **Separators**: `<x-ui.separator>`
+- **Sheets**: `<x-ui.sheet>`, `<x-ui.sheet-trigger>`, `<x-ui.sheet-content>`, etc.
+- **And many more...**
+
+### Layout Components
+
+- `<x-layout.app>` - Main application layout with sidebar
+- `<x-layout.auth>` - Authentication layout with split view
+- `<x-layout.app-header>` - Application header
+- `<x-layout.app-sidebar>` - Application sidebar
+- `<x-layout.head>` - HTML head component
+
+### Icons
+
+Icons are prefixed with `x-icons.`:
+
+- `<x-icons.app-logo>`
+- `<x-icons.search>`
+- `<x-icons.user>`
+- `<x-icons.chevron-down>`
+- And 60+ more icons
+
+## Component Examples
+
+### Button
+
+```blade
+<x-ui.button>Default Button</x-ui.button>
+<x-ui.button variant="outline">Outline Button</x-ui.button>
+<x-ui.button variant="destructive">Delete</x-ui.button>
+<x-ui.button variant="ghost">Ghost Button</x-ui.button>
+<x-ui.button size="sm">Small Button</x-ui.button>
+<x-ui.button size="lg">Large Button</x-ui.button>
+```
+
+### Input
+
+```blade
+<x-ui.label for="email">Email</x-ui.label>
+<x-ui.input id="email" type="email" name="email" required />
+<x-ui.input-error :message="$errors->first('email')" />
+```
+
+### Card
+
+```blade
+<x-ui.card>
+    <x-ui.card-header>
+        <x-ui.card-title>Card Title</x-ui.card-title>
+        <x-ui.card-description>Card description</x-ui.card-description>
+    </x-ui.card-header>
+    <x-ui.card-content>
+        Card content goes here
+    </x-ui.card-content>
+    <x-ui.card-footer>
+        <x-ui.button>Action</x-ui.button>
+    </x-ui.card-footer>
+</x-ui.card>
+```
+
+### Dialog
+
+```blade
+<x-ui.dialog>
+    <x-ui.dialog-trigger>
+        <x-ui.button>Open Dialog</x-ui.button>
+    </x-ui.dialog-trigger>
+    <x-ui.dialog-overlay />
+    <x-ui.dialog-content>
+        <x-ui.dialog-header>
+            <x-ui.dialog-title>Dialog Title</x-ui.dialog-title>
+            <x-ui.dialog-description>Dialog description</x-ui.dialog-description>
+        </x-ui.dialog-header>
+        <p>Dialog content</p>
+        <x-ui.dialog-footer>
+            <x-ui.button variant="outline">Cancel</x-ui.button>
+            <x-ui.button>Confirm</x-ui.button>
+        </x-ui.dialog-footer>
+    </x-ui.dialog-content>
+</x-ui.dialog>
+```
+
+## Example Views
+
+The package includes example views in `resources/views/examples/`:
+
+- `login.blade.php` - Complete login form example
+- `register.blade.php` - Complete registration form example
+- `dashboard.blade.php` - Dashboard example with cards and stats
+
+You can copy these to your application's views directory and customize them as needed.
+
+## Styling
+
+EvolveUI uses Tailwind CSS for styling. Make sure you have Tailwind CSS configured in your Laravel application.
+
+The components use CSS variables for theming, which makes it easy to customize colors:
+
+```css
+:root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    /* ... more variables */
+}
+```
+
+## Configuration
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-config"
+php artisan vendor:publish --tag="evolveui-config"
 ```
 
-This is the contents of the published config file:
+## Requirements
 
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag=":package_slug-views"
-```
-
-## Usage
-
-```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
-```
+- PHP ^8.3
+- Laravel ^10.0 || ^11.0 || ^12.0
+- Tailwind CSS
 
 ## Testing
 
@@ -77,16 +225,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [:author_name](https://github.com/:author_username)
-- [All Contributors](../../contributors)
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 

@@ -1,0 +1,37 @@
+<?php
+
+namespace EvolveUI\EvolveUI\View\Components\Ui;
+
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
+
+class InputGroupPassword extends Component
+{
+    public ?string $class;
+
+    /**
+     * Create a new component instance.
+     */
+    public function __construct(?string $class = null)
+    {
+        $this->class = $class;
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
+    {
+        return view('evolveui::components.ui.input-group-password');
+    }
+
+    public function inputClasses(): string
+    {
+        return cn(
+            '!flex-1 !rounded-none !border-0 !bg-transparent !shadow-none !ring-0 !focus-visible:ring-0 !dark:bg-transparent',
+            $this->class
+        );
+    }
+}
+
