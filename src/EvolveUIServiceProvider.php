@@ -54,19 +54,29 @@ class EvolveUIServiceProvider extends PackageServiceProvider
 
     protected function registerUiComponents(): void
     {
+        // Essential shadcn/ui components only
         $components = [
+            // Core Components
             'Avatar' => \EvolveUI\EvolveUI\View\Components\Ui\Avatar::class,
             'AvatarFallback' => \EvolveUI\EvolveUI\View\Components\Ui\AvatarFallback::class,
             'AvatarImage' => \EvolveUI\EvolveUI\View\Components\Ui\AvatarImage::class,
             'Badge' => \EvolveUI\EvolveUI\View\Components\Ui\Badge::class,
             'Button' => \EvolveUI\EvolveUI\View\Components\Ui\Button::class,
             'Card' => \EvolveUI\EvolveUI\View\Components\Ui\Card::class,
-            'CardAction' => \EvolveUI\EvolveUI\View\Components\Ui\CardAction::class,
             'CardContent' => \EvolveUI\EvolveUI\View\Components\Ui\CardContent::class,
             'CardDescription' => \EvolveUI\EvolveUI\View\Components\Ui\CardDescription::class,
             'CardFooter' => \EvolveUI\EvolveUI\View\Components\Ui\CardFooter::class,
             'CardHeader' => \EvolveUI\EvolveUI\View\Components\Ui\CardHeader::class,
             'CardTitle' => \EvolveUI\EvolveUI\View\Components\Ui\CardTitle::class,
+            'Input' => \EvolveUI\EvolveUI\View\Components\Ui\Input::class,
+            'InputError' => \EvolveUI\EvolveUI\View\Components\Ui\InputError::class,
+            'Label' => \EvolveUI\EvolveUI\View\Components\Ui\Label::class,
+            'Separator' => \EvolveUI\EvolveUI\View\Components\Ui\Separator::class,
+            'Textarea' => \EvolveUI\EvolveUI\View\Components\Ui\Textarea::class,
+            'TextLink' => \EvolveUI\EvolveUI\View\Components\Ui\TextLink::class,
+            'Breadcrumb' => \EvolveUI\EvolveUI\View\Components\Ui\Breadcrumb::class,
+            
+            // Dialog Components
             'Dialog' => \EvolveUI\EvolveUI\View\Components\Ui\Dialog::class,
             'DialogClose' => \EvolveUI\EvolveUI\View\Components\Ui\DialogClose::class,
             'DialogContent' => \EvolveUI\EvolveUI\View\Components\Ui\DialogContent::class,
@@ -76,6 +86,8 @@ class EvolveUIServiceProvider extends PackageServiceProvider
             'DialogOverlay' => \EvolveUI\EvolveUI\View\Components\Ui\DialogOverlay::class,
             'DialogTitle' => \EvolveUI\EvolveUI\View\Components\Ui\DialogTitle::class,
             'DialogTrigger' => \EvolveUI\EvolveUI\View\Components\Ui\DialogTrigger::class,
+            
+            // Dropdown Components
             'Dropdown' => \EvolveUI\EvolveUI\View\Components\Ui\Dropdown::class,
             'DropdownCheckboxItem' => \EvolveUI\EvolveUI\View\Components\Ui\DropdownCheckboxItem::class,
             'DropdownContent' => \EvolveUI\EvolveUI\View\Components\Ui\DropdownContent::class,
@@ -88,39 +100,8 @@ class EvolveUIServiceProvider extends PackageServiceProvider
             'DropdownSubContent' => \EvolveUI\EvolveUI\View\Components\Ui\DropdownSubContent::class,
             'DropdownSubTrigger' => \EvolveUI\EvolveUI\View\Components\Ui\DropdownSubTrigger::class,
             'DropdownTrigger' => \EvolveUI\EvolveUI\View\Components\Ui\DropdownTrigger::class,
-            'EmptyContent' => \EvolveUI\EvolveUI\View\Components\Ui\EmptyContent::class,
-            'EmptyDescription' => \EvolveUI\EvolveUI\View\Components\Ui\EmptyDescription::class,
-            'EmptyHeader' => \EvolveUI\EvolveUI\View\Components\Ui\EmptyHeader::class,
-            'EmptyMedia' => \EvolveUI\EvolveUI\View\Components\Ui\EmptyMedia::class,
-            'EmptyState' => \EvolveUI\EvolveUI\View\Components\Ui\EmptyState::class,
-            'EmptyTitle' => \EvolveUI\EvolveUI\View\Components\Ui\EmptyTitle::class,
-            'EventCalendar' => \EvolveUI\EvolveUI\View\Components\Ui\EventCalendar::class,
-            'Input' => \EvolveUI\EvolveUI\View\Components\Ui\Input::class,
-            'InputError' => \EvolveUI\EvolveUI\View\Components\Ui\InputError::class,
-            'InputGroup' => \EvolveUI\EvolveUI\View\Components\Ui\InputGroup::class,
-            'InputGroupAddon' => \EvolveUI\EvolveUI\View\Components\Ui\InputGroupAddon::class,
-            'InputGroupButton' => \EvolveUI\EvolveUI\View\Components\Ui\InputGroupButton::class,
-            'InputGroupInput' => \EvolveUI\EvolveUI\View\Components\Ui\InputGroupInput::class,
-            'InputGroupPassword' => \EvolveUI\EvolveUI\View\Components\Ui\InputGroupPassword::class,
-            'InputGroupText' => \EvolveUI\EvolveUI\View\Components\Ui\InputGroupText::class,
-            'InputGroupTextarea' => \EvolveUI\EvolveUI\View\Components\Ui\InputGroupTextarea::class,
-            'InputOtp' => \EvolveUI\EvolveUI\View\Components\Ui\InputOtp::class,
-            'InputOtpGroup' => \EvolveUI\EvolveUI\View\Components\Ui\InputOtpGroup::class,
-            'InputOtpSeparator' => \EvolveUI\EvolveUI\View\Components\Ui\InputOtpSeparator::class,
-            'InputOtpSlot' => \EvolveUI\EvolveUI\View\Components\Ui\InputOtpSlot::class,
-            'Item' => \EvolveUI\EvolveUI\View\Components\Ui\Item::class,
-            'ItemActions' => \EvolveUI\EvolveUI\View\Components\Ui\ItemActions::class,
-            'ItemContent' => \EvolveUI\EvolveUI\View\Components\Ui\ItemContent::class,
-            'ItemDescription' => \EvolveUI\EvolveUI\View\Components\Ui\ItemDescription::class,
-            'ItemFooter' => \EvolveUI\EvolveUI\View\Components\Ui\ItemFooter::class,
-            'ItemGroup' => \EvolveUI\EvolveUI\View\Components\Ui\ItemGroup::class,
-            'ItemHeader' => \EvolveUI\EvolveUI\View\Components\Ui\ItemHeader::class,
-            'ItemMedia' => \EvolveUI\EvolveUI\View\Components\Ui\ItemMedia::class,
-            'ItemSeparator' => \EvolveUI\EvolveUI\View\Components\Ui\ItemSeparator::class,
-            'ItemTitle' => \EvolveUI\EvolveUI\View\Components\Ui\ItemTitle::class,
-            'Label' => \EvolveUI\EvolveUI\View\Components\Ui\Label::class,
-            'NativeSelect' => \EvolveUI\EvolveUI\View\Components\Ui\NativeSelect::class,
-            'Separator' => \EvolveUI\EvolveUI\View\Components\Ui\Separator::class,
+            
+            // Sheet Components
             'Sheet' => \EvolveUI\EvolveUI\View\Components\Ui\Sheet::class,
             'SheetClose' => \EvolveUI\EvolveUI\View\Components\Ui\SheetClose::class,
             'SheetDescription' => \EvolveUI\EvolveUI\View\Components\Ui\SheetDescription::class,
@@ -128,14 +109,31 @@ class EvolveUIServiceProvider extends PackageServiceProvider
             'SheetHeader' => \EvolveUI\EvolveUI\View\Components\Ui\SheetHeader::class,
             'SheetTitle' => \EvolveUI\EvolveUI\View\Components\Ui\SheetTitle::class,
             'SheetTrigger' => \EvolveUI\EvolveUI\View\Components\Ui\SheetTrigger::class,
+            
+            // Form Components
+            'Checkbox' => \EvolveUI\EvolveUI\View\Components\Ui\Checkbox::class,
+            'NativeSelect' => \EvolveUI\EvolveUI\View\Components\Ui\NativeSelect::class,
+            'Select' => \EvolveUI\EvolveUI\View\Components\Ui\Select::class,
+            'RadioGroup' => \EvolveUI\EvolveUI\View\Components\Ui\RadioGroup::class,
+            
+            // Table Components
+            'Table' => \EvolveUI\EvolveUI\View\Components\Ui\Table::class,
+            'TableHeader' => \EvolveUI\EvolveUI\View\Components\Ui\TableHeader::class,
+            'TableBody' => \EvolveUI\EvolveUI\View\Components\Ui\TableBody::class,
+            'TableRow' => \EvolveUI\EvolveUI\View\Components\Ui\TableRow::class,
+            'TableHead' => \EvolveUI\EvolveUI\View\Components\Ui\TableHead::class,
+            'TableCell' => \EvolveUI\EvolveUI\View\Components\Ui\TableCell::class,
+            
+            // Utility Components
+            'Progress' => \EvolveUI\EvolveUI\View\Components\Ui\Progress::class,
             'Spinner' => \EvolveUI\EvolveUI\View\Components\Ui\Spinner::class,
-            'Textarea' => \EvolveUI\EvolveUI\View\Components\Ui\Textarea::class,
-            'TextLink' => \EvolveUI\EvolveUI\View\Components\Ui\TextLink::class,
             'Tooltip' => \EvolveUI\EvolveUI\View\Components\Ui\Tooltip::class,
         ];
 
         foreach ($components as $name => $class) {
-            Blade::component($class, "ui.{$name}");
+            if (class_exists($class)) {
+                Blade::component($class, "ui.{$name}");
+            }
         }
     }
 

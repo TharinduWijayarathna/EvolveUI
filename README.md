@@ -7,8 +7,10 @@ A beautiful Laravel UI component library inspired by shadcn/ui, featuring a comp
 
 ## Features
 
-- 🎨 **Beautiful Components**: 100+ shadcn/ui-inspired components
-- 🔐 **Auth Layouts**: Pre-built login/register views with split-screen design
+- 🎨 **Essential Components**: 50+ essential shadcn/ui components (cleaned and focused)
+- 🔐 **Complete Auth System**: Login, register, password reset with beautiful split-view design
+- 📊 **Dashboard**: Pre-built shadcn-style dashboard with stats, tables, and cards
+- 👤 **Profile Management**: Full profile page with account settings and password management
 - 📱 **Responsive**: Mobile-first, fully responsive components
 - 🌙 **Dark Mode**: Built-in dark mode support
 - ⚡ **Blade Components**: Easy-to-use Laravel Blade components
@@ -38,11 +40,25 @@ This will install everything into your application:
 - ✅ **Controllers** → `app/Http/Controllers/Auth/` (authentication controllers)
 - ✅ **Routes** → `routes/auth.php` (authentication routes)
 - ✅ **Helpers** → `app/helpers.php` (utility functions)
+- ✅ **CSS** → `resources/css/app.css` (Tailwind CSS with shadcn theming)
+- ✅ **JS** → `resources/js/app.js` (Alpine.js setup)
 
-After installation, run:
+After installation, you **must** install the required npm packages:
+
 ```bash
+# Install npm dependencies (REQUIRED)
+npm install tailwindcss @tailwindcss/vite tailwindcss-animate alpinejs @alpinejs/focus
+
+# Build assets
+npm run build
+# OR for development:
+npm run dev
+
+# Update composer autoload
 composer dump-autoload
 ```
+
+⚠️ **Important**: The CSS and JS files require these npm packages. Without them, you'll get build errors!
 
 ### 2. Authentication is Ready!
 
@@ -50,6 +66,8 @@ After installation, you immediately have:
 - **Login**: `/login` - Beautiful split-view login page
 - **Register**: `/register` - Registration page with split-view design
 - **Password Reset**: `/forgot-password` and `/reset-password`
+- **Dashboard**: `/dashboard` - Complete shadcn-style dashboard with stats and tables
+- **Profile**: `/profile` - User profile management with account settings
 - **Logout**: POST to `/logout`
 
 All files are now in your application directory - customize them as needed!
@@ -89,7 +107,16 @@ The package includes a beautiful split-view authentication layout. Here's how to
 </x-layout.auth>
 ```
 
-### 3. Use the Dashboard Layout
+### 3. Dashboard & Profile
+
+The starter kit includes a complete dashboard and profile page:
+
+- **Dashboard** (`/dashboard`): Features stats cards, recent sales table, and activity feed
+- **Profile** (`/profile`): Manage your account information, update password, and delete account
+
+Both pages use the `<x-layout.app>` layout with sidebar navigation.
+
+### 4. Use the Dashboard Layout
 
 For authenticated pages, use the app layout with sidebar:
 
@@ -104,20 +131,30 @@ For authenticated pages, use the app layout with sidebar:
 
 ## Available Components
 
-### UI Components
+### Essential UI Components
 
 All UI components are prefixed with `x-ui.`:
 
-- **Buttons**: `<x-ui.button>`
-- **Inputs**: `<x-ui.input>`, `<x-ui.textarea>`, `<x-ui.label>`
-- **Cards**: `<x-ui.card>`, `<x-ui.card-header>`, `<x-ui.card-content>`, etc.
-- **Dialogs**: `<x-ui.dialog>`, `<x-ui.dialog-trigger>`, `<x-ui.dialog-content>`, etc.
-- **Dropdowns**: `<x-ui.dropdown>`, `<x-ui.dropdown-trigger>`, `<x-ui.dropdown-item>`, etc.
+**Core Components:**
+- **Buttons**: `<x-ui.button>` (variants: default, outline, destructive, ghost)
+- **Inputs**: `<x-ui.input>`, `<x-ui.textarea>`, `<x-ui.label>`, `<x-ui.input-error>`
+- **Forms**: `<x-ui.checkbox>`, `<x-ui.select>`, `<x-ui.native-select>`, `<x-ui.radio-group>`
+- **Cards**: `<x-ui.card>`, `<x-ui.card-header>`, `<x-ui.card-content>`, `<x-ui.card-title>`, `<x-ui.card-description>`, `<x-ui.card-footer>`
 - **Avatars**: `<x-ui.avatar>`, `<x-ui.avatar-image>`, `<x-ui.avatar-fallback>`
 - **Badges**: `<x-ui.badge>`
 - **Separators**: `<x-ui.separator>`
+- **Breadcrumbs**: `<x-ui.breadcrumb>`
+
+**Interactive Components:**
+- **Dialogs**: `<x-ui.dialog>`, `<x-ui.dialog-trigger>`, `<x-ui.dialog-content>`, `<x-ui.dialog-header>`, etc.
+- **Dropdowns**: `<x-ui.dropdown>`, `<x-ui.dropdown-trigger>`, `<x-ui.dropdown-content>`, `<x-ui.dropdown-item>`, etc.
 - **Sheets**: `<x-ui.sheet>`, `<x-ui.sheet-trigger>`, `<x-ui.sheet-content>`, etc.
-- **And many more...**
+
+**Data Display:**
+- **Tables**: `<x-ui.table>`, `<x-ui.table-header>`, `<x-ui.table-body>`, `<x-ui.table-row>`, `<x-ui.table-head>`, `<x-ui.table-cell>`
+- **Progress**: `<x-ui.progress>`
+- **Spinner**: `<x-ui.spinner>`
+- **Tooltip**: `<x-ui.tooltip>`
 
 ### Layout Components
 
@@ -126,6 +163,57 @@ All UI components are prefixed with `x-ui.`:
 - `<x-layout.app-header>` - Application header
 - `<x-layout.app-sidebar>` - Application sidebar
 - `<x-layout.head>` - HTML head component
+
+## Assets & Dependencies
+
+### CSS (Tailwind CSS)
+
+The package includes a complete Tailwind CSS configuration with shadcn/ui theming:
+
+- **File**: `resources/css/app.css`
+- **Features**: 
+  - Tailwind CSS v4 with `@tailwindcss/vite`
+  - `tailwindcss-animate` plugin for animations
+  - Complete shadcn color system (light & dark mode)
+  - Custom theme variables for sidebar, charts, etc.
+
+### JavaScript (Alpine.js)
+
+The package includes Alpine.js setup for interactive components:
+
+- **File**: `resources/js/app.js`
+- **Features**:
+  - Alpine.js with `@alpinejs/focus` plugin
+  - Ready for dropdowns, dialogs, and other interactive components
+
+### Required npm Packages
+
+After installation, make sure you have these packages installed:
+
+```bash
+npm install tailwindcss @tailwindcss/vite tailwindcss-animate alpinejs @alpinejs/focus
+```
+
+### Vite Configuration
+
+Make sure your `vite.config.js` includes the CSS and JS files:
+
+```js
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.js',
+            ],
+            refresh: true,
+        }),
+    ],
+});
+```
 
 ### Icons
 

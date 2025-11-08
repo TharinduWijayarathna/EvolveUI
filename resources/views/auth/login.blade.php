@@ -20,7 +20,7 @@
         </div>
 
         <div class="flex items-center space-x-2">
-            <input type="checkbox" id="remember" name="remember" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" />
+            <x-ui.checkbox id="remember" name="remember" :checked="old('remember')" />
             <x-ui.label for="remember" class="text-sm font-normal">
                 Remember me
             </x-ui.label>

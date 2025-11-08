@@ -26,7 +26,7 @@
         </div>
 
         <div class="flex items-start space-x-2">
-            <input type="checkbox" id="terms" name="terms" required class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary mt-0.5" />
+            <x-ui.checkbox id="terms" name="terms" required class="mt-0.5" />
             <x-ui.label for="terms" class="text-sm font-normal">
                 I agree to the Terms of Service and Privacy Policy
             </x-ui.label>
