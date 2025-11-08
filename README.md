@@ -24,15 +24,30 @@ composer require evolveui/evolveui
 
 ## Quick Start
 
-### 1. Publish Views (Optional)
+### 1. Install EvolveUI (Starter Kit)
 
-If you want to customize the views, you can publish them:
+After installing the package, run the install command:
 
 ```bash
-php artisan vendor:publish --tag="evolveui-views"
+php artisan evolveui:install
 ```
 
-### 2. Use the Auth Layout
+This will:
+- ✅ Set up authentication routes automatically
+- ✅ Make all UI components available
+- ✅ Optionally publish views for customization
+
+### 2. Authentication is Ready!
+
+After installation, you immediately have:
+- **Login**: `/login` - Beautiful split-view login page
+- **Register**: `/register` - Registration page with split-view design
+- **Password Reset**: `/forgot-password` and `/reset-password`
+- **Logout**: POST to `/logout`
+
+All authentication views use the EvolveUI components and are ready to use!
+
+### 3. Use Components in Your Views
 
 The package includes a beautiful split-view authentication layout. Here's how to use it:
 
