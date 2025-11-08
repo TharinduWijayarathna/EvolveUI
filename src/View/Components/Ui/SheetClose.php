@@ -26,7 +26,6 @@ class SheetClose extends Component
         return view('evolveui::components.ui.sheet-close');
     }
 
-
     /**
      * Returns Tailwind classes for the close button.
      */

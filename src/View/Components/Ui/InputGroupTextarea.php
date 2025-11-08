@@ -18,7 +18,6 @@ class InputGroupTextarea extends Component
         $this->class = $class;
     }
 
-
     /**
      * Get the view / contents that represent the component.
      */

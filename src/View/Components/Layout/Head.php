@@ -32,6 +32,7 @@ class Head extends Component
     public function fullTitle(): string
     {
         $appName = config('app.name', 'MyApp');
+
         return $this->title ? "{$this->title} – {$appName}" : $appName;
     }
 }

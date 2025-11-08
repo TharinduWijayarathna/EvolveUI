@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class Badge extends Component
 {
     public string $variant;
+
     public ?string $class;
 
     // Predefined variants

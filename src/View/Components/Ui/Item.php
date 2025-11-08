@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class Item extends Component
 {
     public string $variant;
+
     public string $size;
+
     public ?string $class;
 
     /**

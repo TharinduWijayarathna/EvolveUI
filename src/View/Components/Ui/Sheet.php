@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class Sheet extends Component
 {
     public string $side;
+
     public string $class;
 
     /**

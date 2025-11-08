@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class App extends Component
 {
     public $title;
+
     public $breadcrumbs;
 
     /**

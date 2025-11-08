@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class DropdownRadioItem extends Component
 {
     public $class;
+
     public $selected;
 
     /**

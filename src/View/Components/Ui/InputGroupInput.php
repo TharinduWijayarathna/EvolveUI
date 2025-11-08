@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class InputGroupInput extends Component
 {
     public ?string $class;
+
     public ?string $type;
 
     /**

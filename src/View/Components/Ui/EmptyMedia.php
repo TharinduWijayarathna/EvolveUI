@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class EmptyMedia extends Component
 {
     public string $variant;
+
     public ?string $class;
 
     /**
@@ -38,6 +39,7 @@ class EmptyMedia extends Component
         ];
 
         $variantClass = $variants[$this->variant] ?? $variants['default'];
+
         return cn($base, $variantClass, $this->class);
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class DropdownCheckboxItem extends Component
 {
     public $class;
+
     public $checked;
 
     /**

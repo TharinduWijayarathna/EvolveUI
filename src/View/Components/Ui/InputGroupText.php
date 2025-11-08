@@ -29,7 +29,6 @@ class InputGroupText extends Component
     /**
      * Compute the full class string for the component.
      */
-
     public function textClasses(): string
     {
         return cn(
