@@ -12,6 +12,7 @@ class InstallEvolveUICommand extends Command
     public $description = 'Install EvolveUI authentication and UI components into your application';
 
     protected $packagePath;
+
     protected $basePath;
 
     public function handle(): int
@@ -42,7 +43,7 @@ class InstallEvolveUICommand extends Command
 
         // Check if User model exists
         $userModelPath = app_path('Models/User.php');
-        if (!File::exists($userModelPath)) {
+        if (! File::exists($userModelPath)) {
             $this->warn('User model not found. Make sure you have a User model with authentication.');
         }
 
@@ -284,8 +285,9 @@ class InstallEvolveUICommand extends Command
         $source = $this->packagePath.'src/routes/auth.php';
         $destination = $this->basePath.'/routes/auth.php';
 
-        if (!File::exists($source)) {
+        if (! File::exists($source)) {
             $this->warn('   ⚠️  Source routes file not found: '.$source);
+
             return;
         }
 
@@ -309,11 +311,11 @@ class InstallEvolveUICommand extends Command
 
             // Check if already included
             if (str_contains($webContent, "require __DIR__.'/auth.php'") ||
-                str_contains($webContent, "require __DIR__.\"/auth.php\"")) {
+                str_contains($webContent, 'require __DIR__."/auth.php"')) {
                 $this->info('   ✓ Routes already included in routes/web.php');
             } else {
                 // Add require statement at the end
-                $webContent = rtrim($webContent) . "\n\nrequire __DIR__.'/auth.php';\n";
+                $webContent = rtrim($webContent)."\n\nrequire __DIR__.'/auth.php';\n";
                 File::put($webRoutesPath, $webContent);
                 $this->info('   ✓ Added require statement to routes/web.php');
             }
@@ -339,11 +341,11 @@ class InstallEvolveUICommand extends Command
             if (File::exists($composerPath)) {
                 $composer = json_decode(File::get($composerPath), true);
 
-                if (!isset($composer['autoload']['files'])) {
+                if (! isset($composer['autoload']['files'])) {
                     $composer['autoload']['files'] = [];
                 }
 
-                if (!in_array('app/helpers.php', $composer['autoload']['files'])) {
+                if (! in_array('app/helpers.php', $composer['autoload']['files'])) {
                     $composer['autoload']['files'][] = 'app/helpers.php';
                     File::put($composerPath, json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
                     $this->info('   ✓ Added helpers.php to composer.json autoload');
@@ -451,7 +453,7 @@ class InstallEvolveUICommand extends Command
 
     protected function copyDirectory(string $source, string $destination, array $exclude = []): void
     {
-        if (!File::isDirectory($source)) {
+        if (! File::isDirectory($source)) {
             return;
         }
 
