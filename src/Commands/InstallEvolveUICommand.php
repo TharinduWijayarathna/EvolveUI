@@ -29,7 +29,7 @@ class InstallEvolveUICommand extends Command
 
         // Check if User model exists
         $userModelPath = app_path('Models/User.php');
-        if (!File::exists($userModelPath)) {
+        if (! File::exists($userModelPath)) {
             $this->warn('User model not found. Make sure you have a User model with authentication.');
         }
 
@@ -53,4 +53,3 @@ class InstallEvolveUICommand extends Command
         return self::SUCCESS;
     }
 }
-

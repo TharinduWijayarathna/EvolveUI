@@ -51,4 +51,3 @@ class NewPasswordController
         return redirect()->route('login')->with('status', __($status));
     }
 }
-

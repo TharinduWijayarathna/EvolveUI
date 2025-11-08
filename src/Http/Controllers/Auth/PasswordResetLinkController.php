@@ -38,4 +38,3 @@ class PasswordResetLinkController
         return back()->with('status', __($status));
     }
 }
-
