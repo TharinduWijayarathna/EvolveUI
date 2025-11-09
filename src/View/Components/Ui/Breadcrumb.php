@@ -20,4 +20,3 @@ class Breadcrumb extends Component
         return view('evolveui::components.ui.breadcrumb');
     }
 }
-

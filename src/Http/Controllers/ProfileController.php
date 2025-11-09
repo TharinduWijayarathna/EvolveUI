@@ -76,4 +76,3 @@ class ProfileController
         return redirect('/');
     }
 }
-

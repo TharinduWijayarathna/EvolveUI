@@ -112,7 +112,7 @@ class InstallEvolveUICommand extends Command
                 'separator', 'sheet', 'sheet-close', 'sheet-description', 'sheet-footer',
                 'sheet-header', 'sheet-title', 'sheet-trigger', 'spinner', 'table',
                 'table-body', 'table-cell', 'table-head', 'table-header', 'table-row',
-                'textarea', 'text-link', 'tooltip', 'progress'
+                'textarea', 'text-link', 'tooltip', 'progress',
             ],
             'layout' => ['app', 'app-header', 'app-sidebar', 'auth', 'head'],
             'icons' => [], // Copy all icons
@@ -176,7 +176,7 @@ class InstallEvolveUICommand extends Command
             'Separator', 'Sheet', 'SheetClose', 'SheetDescription', 'SheetFooter',
             'SheetHeader', 'SheetTitle', 'SheetTrigger', 'Spinner', 'Table',
             'TableBody', 'TableCell', 'TableHead', 'TableHeader', 'TableRow',
-            'Textarea', 'TextLink', 'Tooltip', 'Progress'
+            'Textarea', 'TextLink', 'Tooltip', 'Progress',
         ];
 
         // Copy essential UI components
@@ -419,12 +419,12 @@ class InstallEvolveUICommand extends Command
 
             $missingPackages = [];
             foreach ($requiredPackages as $key => $package) {
-                if (!isset($dependencies[$package])) {
+                if (! isset($dependencies[$package])) {
                     $missingPackages[] = $package;
                 }
             }
 
-            if (!empty($missingPackages)) {
+            if (! empty($missingPackages)) {
                 $this->newLine();
                 $this->warn('   ⚠️  Missing npm packages detected!');
                 $this->line('   📦 Required packages:');

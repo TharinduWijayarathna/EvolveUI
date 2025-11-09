@@ -20,4 +20,3 @@ class TableCell extends Component
         return view('evolveui::components.ui.table-cell');
     }
 }
-

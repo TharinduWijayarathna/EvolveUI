@@ -20,4 +20,3 @@ class Table extends Component
         return view('evolveui::components.ui.table');
     }
 }
-

@@ -20,4 +20,3 @@ class Checkbox extends Component
         return view('evolveui::components.ui.checkbox');
     }
 }
-
