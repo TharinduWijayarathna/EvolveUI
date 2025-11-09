@@ -10,9 +10,9 @@ class Checkbox extends Component
 {
     public bool $checked;
 
-    public function __construct(bool $checked = false)
+    public function __construct(?bool $checked = false)
     {
-        $this->checked = $checked;
+        $this->checked = $checked ?? false;
     }
 
     public function render(): View|Closure|string

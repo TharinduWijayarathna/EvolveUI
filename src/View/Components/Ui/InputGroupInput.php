@@ -8,17 +8,16 @@ use Illuminate\View\Component;
 
 class InputGroupInput extends Component
 {
-    public ?string $class;
-
     public ?string $type;
+    public ?string $class;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(?string $class = null, ?string $type = 'text')
+    public function __construct(?string $type = 'text', ?string $class = null)
     {
-        $this->class = $class;
         $this->type = $type;
+        $this->class = $class;
     }
 
     /**
@@ -32,7 +31,7 @@ class InputGroupInput extends Component
     public function inputClasses(): string
     {
         return cn(
-            '!flex-1 !rounded-none !border-0 !bg-transparent !shadow-none !ring-0 !focus-visible:ring-0 !dark:bg-transparent',
+            'file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground h-full w-full min-w-0 border-0 bg-transparent px-3 py-1 text-base shadow-none outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
             $this->class
         );
     }

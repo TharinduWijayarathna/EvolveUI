@@ -1,4 +1,4 @@
-<x-layout.auth title="Welcome back" description="Sign in to your account to continue" :showSignUpPrompt="true">
+<x-layout.auth title="Welcome back" description="Sign in to your account to continue">
     <form method="POST" action="{{ route('login') }}" class="space-y-4">
         @csrf
 

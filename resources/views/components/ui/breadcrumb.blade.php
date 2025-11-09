@@ -34,12 +34,12 @@
                         @if ($isLast)
                             <span data-slot="breadcrumb-page" role="link" aria-disabled="true" aria-current="page"
                                 class="text-foreground font-normal block truncate">
-                                {{ $breadcrumb['title'] }}
+                                {{ $breadcrumb['label'] ?? $breadcrumb['title'] ?? '' }}
                             </span>
                         @else
                             <a data-slot="breadcrumb-link" href="{{ $breadcrumb['href'] }}"
                                 class="hover:text-foreground transition-colors block truncate">
-                                {{ $breadcrumb['title'] }}
+                                {{ $breadcrumb['label'] ?? $breadcrumb['title'] ?? '' }}
                             </a>
                         @endif
                     </li>

@@ -67,14 +67,21 @@ class InstallEvolveUICommand extends Command
         $this->line('  <x-ui.table>, <x-ui.checkbox>, <x-ui.select>');
         $this->line('  And 50+ essential components!');
         $this->newLine();
-        $this->info('📝 Next steps:');
-        $this->line('  1. Install npm dependencies (if not already installed):');
-        $this->line('     npm install tailwindcss @tailwindcss/vite tailwindcss-animate alpinejs @alpinejs/focus');
-        $this->line('  2. Build assets: npm run build (or npm run dev for development)');
-        $this->line('  3. Run: composer dump-autoload');
-        $this->line('  4. Visit /login to see your beautiful authentication pages!');
         $this->newLine();
-        $this->warn('⚠️  IMPORTANT: Make sure npm packages are installed before building assets!');
+        $this->info('📝 Next steps:');
+        $this->newLine();
+        $this->line('  1. Install npm dependencies:');
+        $this->line('     <fg=cyan>npm install tailwindcss @tailwindcss/vite tailwindcss-animate alpinejs @alpinejs/focus</>');
+        $this->newLine();
+        $this->line('  2. Build assets:');
+        $this->line('     <fg=cyan>npm run build</> (or <fg=cyan>npm run dev</> for development)');
+        $this->newLine();
+        $this->line('  3. Update composer autoload:');
+        $this->line('     <fg=cyan>composer dump-autoload</>');
+        $this->newLine();
+        $this->line('  4. Visit <fg=cyan>/login</> to see your beautiful authentication pages!');
+        $this->newLine();
+        $this->warn('⚠️  IMPORTANT: Install npm packages before building assets!');
 
         return self::SUCCESS;
     }
@@ -101,7 +108,7 @@ class InstallEvolveUICommand extends Command
                 'dropdown', 'dropdown-checkbox-item', 'dropdown-content', 'dropdown-item',
                 'dropdown-label', 'dropdown-radio-item', 'dropdown-separator', 'dropdown-shortcut',
                 'dropdown-sub', 'dropdown-sub-content', 'dropdown-sub-trigger', 'dropdown-trigger',
-                'input', 'input-error', 'label', 'native-select', 'select', 'radio-group',
+                'input', 'input-error', 'input-group', 'input-group-addon', 'input-group-input', 'label', 'native-select', 'select', 'radio-group',
                 'separator', 'sheet', 'sheet-close', 'sheet-description', 'sheet-footer',
                 'sheet-header', 'sheet-title', 'sheet-trigger', 'spinner', 'table',
                 'table-body', 'table-cell', 'table-head', 'table-header', 'table-row',
@@ -165,7 +172,7 @@ class InstallEvolveUICommand extends Command
             'Dropdown', 'DropdownCheckboxItem', 'DropdownContent', 'DropdownItem',
             'DropdownLabel', 'DropdownRadioItem', 'DropdownSeparator', 'DropdownShortcut',
             'DropdownSub', 'DropdownSubContent', 'DropdownSubTrigger', 'DropdownTrigger',
-            'Input', 'InputError', 'Label', 'NativeSelect', 'Select', 'RadioGroup',
+            'Input', 'InputError', 'InputGroup', 'InputGroupAddon', 'InputGroupInput', 'Label', 'NativeSelect', 'Select', 'RadioGroup',
             'Separator', 'Sheet', 'SheetClose', 'SheetDescription', 'SheetFooter',
             'SheetHeader', 'SheetTitle', 'SheetTrigger', 'Spinner', 'Table',
             'TableBody', 'TableCell', 'TableHead', 'TableHeader', 'TableRow',
@@ -367,32 +374,26 @@ class InstallEvolveUICommand extends Command
         $sourceJs = $this->packagePath.'resources/js/app.js';
         $destinationJs = $this->basePath.'/resources/js/app.js';
 
-        // Install CSS
+        // Install CSS (replace if exists)
         if (File::exists($sourceCss)) {
-            // Check if app.css already exists
             if (File::exists($destinationCss)) {
-                $this->warn('   ⚠️  resources/css/app.css already exists. Skipping to avoid overwriting.');
-                $this->line('   💡 You may want to merge the Tailwind configuration manually.');
-            } else {
-                File::ensureDirectoryExists(dirname($destinationCss));
-                File::copy($sourceCss, $destinationCss);
-                $this->info('   ✓ CSS installed to resources/css/app.css');
+                $this->warn('   ⚠️  resources/css/app.css already exists. Replacing with EvolveUI version.');
             }
+            File::ensureDirectoryExists(dirname($destinationCss));
+            File::copy($sourceCss, $destinationCss);
+            $this->info('   ✓ CSS installed/replaced at resources/css/app.css');
         } else {
             $this->warn('   ⚠️  CSS file not found: '.$sourceCss);
         }
 
-        // Install JS
+        // Install JS (replace if exists)
         if (File::exists($sourceJs)) {
-            // Check if app.js already exists
             if (File::exists($destinationJs)) {
-                $this->warn('   ⚠️  resources/js/app.js already exists. Skipping to avoid overwriting.');
-                $this->line('   💡 You may want to merge the Alpine.js setup manually.');
-            } else {
-                File::ensureDirectoryExists(dirname($destinationJs));
-                File::copy($sourceJs, $destinationJs);
-                $this->info('   ✓ JS installed to resources/js/app.js');
+                $this->warn('   ⚠️  resources/js/app.js already exists. Replacing with EvolveUI version.');
             }
+            File::ensureDirectoryExists(dirname($destinationJs));
+            File::copy($sourceJs, $destinationJs);
+            $this->info('   ✓ JS installed/replaced at resources/js/app.js');
         } else {
             $this->warn('   ⚠️  JS file not found: '.$sourceJs);
         }
@@ -432,8 +433,8 @@ class InstallEvolveUICommand extends Command
                     $this->line("      {$status} {$package}");
                 }
                 $this->newLine();
-                $this->line('   💡 Run this command to install:');
-                $this->line('      npm install '.implode(' ', $missingPackages));
+                $this->line('   💡 Install missing packages:');
+                $this->line('      <fg=cyan>npm install '.implode(' ', $missingPackages).'</>');
             } else {
                 $this->info('   ✓ All required npm packages are installed');
             }
@@ -447,7 +448,8 @@ class InstallEvolveUICommand extends Command
             $this->line('      - alpinejs');
             $this->line('      - @alpinejs/focus');
             $this->newLine();
-            $this->line('   💡 Run: npm install tailwindcss @tailwindcss/vite tailwindcss-animate alpinejs @alpinejs/focus');
+            $this->line('   💡 Install packages:');
+            $this->line('      <fg=cyan>npm install tailwindcss @tailwindcss/vite tailwindcss-animate alpinejs @alpinejs/focus</>');
         }
     }
 

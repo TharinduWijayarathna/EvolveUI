@@ -1,8 +1,6 @@
 @props([
     'title' => null,
     'description' => null,
-    'showSignUpPrompt' => false,
-    'showSignInPrompt' => false,
     'appearance' => 'system',
 ])
 
@@ -88,30 +86,6 @@
 
         {{-- Right Side: Auth form --}}
         <div class="w-full lg:p-8">
-            {{-- Sign Up Prompt --}}
-            @if ($showSignUpPrompt)
-                <div class="absolute top-10 right-8 hidden items-center gap-2 lg:flex">
-                    <span class="text-sm text-muted-foreground">Don't have an account?</span>
-                    <x-ui.button variant="secondary" size="sm" class="!rounded-full" tag="a"
-                        :href="route('onboarding.email')">
-                        <x-icons.circle-arrow-left />
-                        Sign up for free
-                    </x-ui.button>
-                </div>
-            @endif
-
-            {{-- Sign In Prompt --}}
-            @if ($showSignInPrompt)
-                <div class="absolute top-10 right-8 hidden items-center gap-2 lg:flex">
-                    <span class="text-sm text-muted-foreground">Already have an account?</span>
-                    <x-ui.button variant="secondary" size="sm" class="!rounded-full" tag="a"
-                        :href="route('login')">
-                        <x-icons.circle-arrow-left />
-                        Sign in
-                    </x-ui.button>
-                </div>
-            @endif
-
             {{-- Center Column --}}
             <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                 <a href="{{ route('home') }}"

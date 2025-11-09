@@ -1,4 +1,4 @@
-<x-layout.auth title="Create an account" description="Enter your information to get started" :showSignInPrompt="true">
+<x-layout.auth title="Create an account" description="Enter your information to get started">
     <form method="POST" action="{{ route('register') }}" class="space-y-4">
         @csrf
 

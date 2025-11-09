@@ -1,4 +1,4 @@
-<x-layout.auth title="Forgot Password" description="Enter your email to receive a password reset link" :showSignInPrompt="true">
+<x-layout.auth title="Forgot Password" description="Enter your email to receive a password reset link">
     <form method="POST" action="{{ route('password.email') }}" class="space-y-4">
         @csrf
 

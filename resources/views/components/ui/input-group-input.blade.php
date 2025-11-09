@@ -1,1 +1,1 @@
-<x-ui.input data-slot="input-group-control" {{ $attributes->merge(['class' => $inputClasses()]) }} />
+<input type="{{ $type }}" {{ $attributes->merge(['class' => $inputClasses()]) }} data-slot="input" />
