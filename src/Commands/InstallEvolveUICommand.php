@@ -141,6 +141,18 @@ class InstallEvolveUICommand extends Command
             File::copyDirectory($source.'/components/icons', $destination.'/components/icons');
         }
 
+        // Explicitly ensure app-logo is updated (replace if exists)
+        $appLogoSource = $source.'/components/icons/app-logo.blade.php';
+        $appLogoDestination = $destination.'/components/icons/app-logo.blade.php';
+        if (File::exists($appLogoSource)) {
+            if (File::exists($appLogoDestination)) {
+                $this->warn('   ⚠️  app-logo.blade.php already exists. Replacing with EvolveUI version.');
+            }
+            File::ensureDirectoryExists(dirname($appLogoDestination));
+            File::copy($appLogoSource, $appLogoDestination);
+            $this->info('   ✓ App logo icon updated');
+        }
+
         // Copy dashboard and profile views
         if (File::exists($source.'/dashboard.blade.php')) {
             File::copy($source.'/dashboard.blade.php', $destination.'/dashboard.blade.php');
