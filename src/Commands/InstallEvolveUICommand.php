@@ -311,10 +311,11 @@ class InstallEvolveUICommand extends Command
         File::put($destination, $content);
         $this->info('   ✓ Routes file created: routes/auth.php');
 
-        // Add require to web.php
+        // Add require to web.php and ensure home route exists
         $webRoutesPath = $this->basePath.'/routes/web.php';
         if (File::exists($webRoutesPath)) {
             $webContent = File::get($webRoutesPath);
+            $modified = false;
 
             // Check if already included
             if (str_contains($webContent, "require __DIR__.'/auth.php'") ||
@@ -323,8 +324,28 @@ class InstallEvolveUICommand extends Command
             } else {
                 // Add require statement at the end
                 $webContent = rtrim($webContent)."\n\nrequire __DIR__.'/auth.php';\n";
-                File::put($webRoutesPath, $webContent);
+                $modified = true;
                 $this->info('   ✓ Added require statement to routes/web.php');
+            }
+
+            // Check if home route exists
+            $hasHomeRoute = str_contains($webContent, "->name('home')") ||
+                          str_contains($webContent, '->name("home")') ||
+                          preg_match('/Route::.*home/i', $webContent);
+
+            if (! $hasHomeRoute) {
+                // Add default home route if it doesn't exist
+                $homeRoute = "\n\nRoute::get('/', function () {\n    return view('welcome');\n})->name('home');\n";
+                $webContent = rtrim($webContent).$homeRoute;
+                $modified = true;
+                $this->info('   ✓ Added default home route with name(\'home\')');
+            } else {
+                $this->info('   ✓ Home route already exists');
+            }
+
+            // Write file only if modified
+            if ($modified) {
+                File::put($webRoutesPath, $webContent);
             }
         } else {
             $this->warn('   ⚠️  routes/web.php not found. Please manually add: require __DIR__.\'/auth.php\';');
