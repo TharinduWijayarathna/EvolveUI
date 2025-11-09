@@ -27,9 +27,6 @@ if (! function_exists('cn')) {
 if (! function_exists('getInitials')) {
     /**
      * Get initials from a name (first letter of first two words).
-     *
-     * @param  string  $name
-     * @return string
      */
     function getInitials(string $name): string
     {
