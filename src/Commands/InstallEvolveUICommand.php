@@ -289,66 +289,46 @@ class InstallEvolveUICommand extends Command
     {
         $this->info('🛣️  Installing routes...');
 
-        $source = $this->packagePath.'src/routes/auth.php';
-        $destination = $this->basePath.'/routes/auth.php';
+        // Install auth.php routes
+        $authSource = $this->packagePath.'src/routes/auth.php';
+        $authDestination = $this->basePath.'/routes/auth.php';
 
-        if (! File::exists($source)) {
-            $this->warn('   ⚠️  Source routes file not found: '.$source);
+        if (! File::exists($authSource)) {
+            $this->warn('   ⚠️  Source routes file not found: '.$authSource);
+        } else {
+            $content = File::get($authSource);
 
-            return;
+            // Update controller namespaces
+            $content = str_replace(
+                'EvolveUI\\EvolveUI\\Http\\Controllers\\Auth\\',
+                'App\\Http\\Controllers\\Auth\\',
+                $content
+            );
+
+            // Also update ProfileController namespace
+            $content = str_replace(
+                'EvolveUI\\EvolveUI\\Http\\Controllers\\',
+                'App\\Http\\Controllers\\',
+                $content
+            );
+
+            // Write routes file
+            File::put($authDestination, $content);
+            $this->info('   ✓ Routes file created: routes/auth.php');
         }
 
-        $content = File::get($source);
+        // Install web.php routes (replace existing)
+        $webSource = $this->packagePath.'src/routes/web.php';
+        $webDestination = $this->basePath.'/routes/web.php';
 
-        // Update controller namespaces
-        $content = str_replace(
-            'EvolveUI\\EvolveUI\\Http\\Controllers\\Auth\\',
-            'App\\Http\\Controllers\\Auth\\',
-            $content
-        );
-
-        // Write routes file
-        File::put($destination, $content);
-        $this->info('   ✓ Routes file created: routes/auth.php');
-
-        // Add require to web.php and ensure home route exists
-        $webRoutesPath = $this->basePath.'/routes/web.php';
-        if (File::exists($webRoutesPath)) {
-            $webContent = File::get($webRoutesPath);
-            $modified = false;
-
-            // Check if already included
-            if (str_contains($webContent, "require __DIR__.'/auth.php'") ||
-                str_contains($webContent, 'require __DIR__."/auth.php"')) {
-                $this->info('   ✓ Routes already included in routes/web.php');
-            } else {
-                // Add require statement at the end
-                $webContent = rtrim($webContent)."\n\nrequire __DIR__.'/auth.php';\n";
-                $modified = true;
-                $this->info('   ✓ Added require statement to routes/web.php');
-            }
-
-            // Check if home route exists
-            $hasHomeRoute = str_contains($webContent, "->name('home')") ||
-                          str_contains($webContent, '->name("home")') ||
-                          preg_match('/Route::.*home/i', $webContent);
-
-            if (! $hasHomeRoute) {
-                // Add default home route if it doesn't exist
-                $homeRoute = "\n\nRoute::get('/', function () {\n    return view('welcome');\n})->name('home');\n";
-                $webContent = rtrim($webContent).$homeRoute;
-                $modified = true;
-                $this->info('   ✓ Added default home route with name(\'home\')');
-            } else {
-                $this->info('   ✓ Home route already exists');
-            }
-
-            // Write file only if modified
-            if ($modified) {
-                File::put($webRoutesPath, $webContent);
-            }
+        if (! File::exists($webSource)) {
+            $this->warn('   ⚠️  Source web.php file not found: '.$webSource);
         } else {
-            $this->warn('   ⚠️  routes/web.php not found. Please manually add: require __DIR__.\'/auth.php\';');
+            if (File::exists($webDestination)) {
+                $this->warn('   ⚠️  routes/web.php already exists. Replacing with EvolveUI version.');
+            }
+            File::copy($webSource, $webDestination);
+            $this->info('   ✓ Routes file installed/replaced: routes/web.php');
         }
 
         $this->info('   ✓ Routes installation complete');
