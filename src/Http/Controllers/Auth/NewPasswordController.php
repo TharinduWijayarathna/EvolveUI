@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\Http\Controllers\Auth;
+namespace BladeCN\BladeCN\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +16,7 @@ class NewPasswordController
      */
     public function create(Request $request)
     {
-        return view('evolveui::auth.reset-password', [
+        return view('bladecn::auth.reset-password', [
             'request' => $request,
         ]);
     }

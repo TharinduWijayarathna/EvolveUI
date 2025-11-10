@@ -1,9 +1,9 @@
-# EvolveUI
+# BladeCN
 
 A beautiful Laravel UI component library inspired by shadcn/ui, featuring a complete set of components for building modern web applications.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/evolveui/evolveui.svg?style=flat-square)](https://packagist.org/packages/evolveui/evolveui)
-[![Total Downloads](https://img.shields.io/packagist/dt/evolveui/evolveui.svg?style=flat-square)](https://packagist.org/packages/evolveui/evolveui)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/bladecn/bladecn.svg?style=flat-square)](https://packagist.org/packages/bladecn/bladecn)
+[![Total Downloads](https://img.shields.io/packagist/dt/bladecn/bladecn.svg?style=flat-square)](https://packagist.org/packages/bladecn/bladecn)
 
 ## Features
 
@@ -21,17 +21,17 @@ A beautiful Laravel UI component library inspired by shadcn/ui, featuring a comp
 You can install the package via composer:
 
 ```bash
-composer require evolveui/evolveui
+composer require bladecn/bladecn
 ```
 
 ## Quick Start
 
-### 1. Install EvolveUI (Starter Kit)
+### 1. Install BladeCN (Starter Kit)
 
 After installing the package, run the install command:
 
 ```bash
-php artisan evolveui:install
+php artisan bladecn:install
 ```
 
 This will install everything into your application:
@@ -297,7 +297,7 @@ You can copy these to your application's views directory and customize them as n
 
 ## Styling
 
-EvolveUI uses Tailwind CSS for styling. Make sure you have Tailwind CSS configured in your Laravel application.
+BladeCN uses Tailwind CSS for styling. Make sure you have Tailwind CSS configured in your Laravel application.
 
 The components use CSS variables for theming, which makes it easy to customize colors:
 
@@ -314,7 +314,7 @@ The components use CSS variables for theming, which makes it easy to customize c
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="evolveui-config"
+php artisan vendor:publish --tag="bladecn-config"
 ```
 
 ## Requirements

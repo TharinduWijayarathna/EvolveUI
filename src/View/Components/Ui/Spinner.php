@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\View\Components\Ui;
+namespace BladeCN\BladeCN\View\Components\Ui;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -26,7 +26,7 @@ class Spinner extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('evolveui::components.ui.spinner');
+        return view('bladecn::components.ui.spinner');
     }
 
     public function spinnerClasses(): string

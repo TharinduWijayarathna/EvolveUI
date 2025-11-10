@@ -1,8 +1,8 @@
 <?php
 
-namespace EvolveUI\EvolveUI\Tests;
+namespace BladeCN\BladeCN\Tests;
 
-use EvolveUI\EvolveUI\EvolveUIServiceProvider;
+use BladeCN\BladeCN\BladeCNServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -15,7 +15,7 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (
                 string $modelName,
-            ) => 'EvolveUI\\EvolveUI\\Database\\Factories\\'.
+            ) => 'BladeCN\\BladeCN\\Database\\Factories\\'.
                 class_basename($modelName).
                 'Factory',
         );
@@ -23,7 +23,7 @@ class TestCase extends Orchestra
 
     protected function getPackageProviders($app)
     {
-        return [EvolveUIServiceProvider::class];
+        return [BladeCNServiceProvider::class];
     }
 
     public function getEnvironmentSetUp($app)

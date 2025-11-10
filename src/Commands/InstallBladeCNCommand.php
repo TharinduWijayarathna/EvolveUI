@@ -1,15 +1,15 @@
 <?php
 
-namespace EvolveUI\EvolveUI\Commands;
+namespace BladeCN\BladeCN\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class InstallEvolveUICommand extends Command
+class InstallBladeCNCommand extends Command
 {
-    public $signature = 'evolveui:install {--force : Overwrite existing files}';
+    public $signature = 'bladecn:install {--force : Overwrite existing files}';
 
-    public $description = 'Install EvolveUI authentication and UI components into your application';
+    public $description = 'Install BladeCN authentication and UI components into your application';
 
     protected $packagePath;
 
@@ -20,7 +20,7 @@ class InstallEvolveUICommand extends Command
         $this->packagePath = __DIR__.'/../../';
         $this->basePath = base_path();
 
-        $this->info('🚀 Installing EvolveUI Starter Kit...');
+        $this->info('🚀 Installing BladeCN Starter Kit...');
         $this->newLine();
 
         // Install views
@@ -48,7 +48,7 @@ class InstallEvolveUICommand extends Command
         }
 
         $this->newLine();
-        $this->info('✅ EvolveUI installed successfully!');
+        $this->info('✅ BladeCN installed successfully!');
         $this->newLine();
         $this->info('Available routes:');
         $this->line('  - /login');
@@ -146,7 +146,7 @@ class InstallEvolveUICommand extends Command
         $appLogoDestination = $destination.'/components/icons/app-logo.blade.php';
         if (File::exists($appLogoSource)) {
             if (File::exists($appLogoDestination)) {
-                $this->warn('   ⚠️  app-logo.blade.php already exists. Replacing with EvolveUI version.');
+                $this->warn('   ⚠️  app-logo.blade.php already exists. Replacing with BladeCN version.');
             }
             File::ensureDirectoryExists(dirname($appLogoDestination));
             File::copy($appLogoSource, $appLogoDestination);
@@ -199,14 +199,14 @@ class InstallEvolveUICommand extends Command
 
                 // Update namespace
                 $content = str_replace(
-                    'namespace EvolveUI\\EvolveUI\\View\\Components\\Ui;',
+                    'namespace BladeCN\\BladeCN\\View\\Components\\Ui;',
                     'namespace App\\View\\Components\\Ui;',
                     $content
                 );
 
                 // Update view paths
                 $content = preg_replace(
-                    "/view\('evolveui::components\.ui\.([^']+)'\)/",
+                    "/view\('bladecn::components\.ui\.([^']+)'\)/",
                     "view('components.ui.$1')",
                     $content
                 );
@@ -222,14 +222,14 @@ class InstallEvolveUICommand extends Command
 
             // Update namespace
             $content = str_replace(
-                'namespace EvolveUI\\EvolveUI\\View\\Components\\Layout;',
+                'namespace BladeCN\\BladeCN\\View\\Components\\Layout;',
                 'namespace App\\View\\Components\\Layout;',
                 $content
             );
 
             // Update view paths
             $content = preg_replace(
-                "/view\('evolveui::components\.layout\.([^']+)'\)/",
+                "/view\('bladecn::components\.layout\.([^']+)'\)/",
                 "view('components.layout.$1')",
                 $content
             );
@@ -257,14 +257,14 @@ class InstallEvolveUICommand extends Command
 
             // Update namespace
             $content = str_replace(
-                'namespace EvolveUI\\EvolveUI\\Http\\Controllers\\Auth;',
+                'namespace BladeCN\\BladeCN\\Http\\Controllers\\Auth;',
                 'namespace App\\Http\\Controllers\\Auth;',
                 $content
             );
 
             // Update view paths
             $content = preg_replace(
-                "/view\('evolveui::auth\.([^']+)'\)/",
+                "/view\('bladecn::auth\.([^']+)'\)/",
                 "view('auth.$1')",
                 $content
             );
@@ -279,14 +279,14 @@ class InstallEvolveUICommand extends Command
 
             // Update namespace
             $content = str_replace(
-                'namespace EvolveUI\\EvolveUI\\Http\\Controllers;',
+                'namespace BladeCN\\BladeCN\\Http\\Controllers;',
                 'namespace App\\Http\\Controllers;',
                 $content
             );
 
             // Update view paths
             $content = preg_replace(
-                "/view\('evolveui::([^']+)'\)/",
+                "/view\('bladecn::([^']+)'\)/",
                 "view('$1')",
                 $content
             );
@@ -312,14 +312,14 @@ class InstallEvolveUICommand extends Command
 
             // Update controller namespaces
             $content = str_replace(
-                'EvolveUI\\EvolveUI\\Http\\Controllers\\Auth\\',
+                'BladeCN\\BladeCN\\Http\\Controllers\\Auth\\',
                 'App\\Http\\Controllers\\Auth\\',
                 $content
             );
 
             // Also update ProfileController namespace
             $content = str_replace(
-                'EvolveUI\\EvolveUI\\Http\\Controllers\\',
+                'BladeCN\\BladeCN\\Http\\Controllers\\',
                 'App\\Http\\Controllers\\',
                 $content
             );
@@ -337,7 +337,7 @@ class InstallEvolveUICommand extends Command
             $this->warn('   ⚠️  Source web.php file not found: '.$webSource);
         } else {
             if (File::exists($webDestination)) {
-                $this->warn('   ⚠️  routes/web.php already exists. Replacing with EvolveUI version.');
+                $this->warn('   ⚠️  routes/web.php already exists. Replacing with BladeCN version.');
             }
             File::copy($webSource, $webDestination);
             $this->info('   ✓ Routes file installed/replaced: routes/web.php');
@@ -390,7 +390,7 @@ class InstallEvolveUICommand extends Command
         // Install CSS (replace if exists)
         if (File::exists($sourceCss)) {
             if (File::exists($destinationCss)) {
-                $this->warn('   ⚠️  resources/css/app.css already exists. Replacing with EvolveUI version.');
+                $this->warn('   ⚠️  resources/css/app.css already exists. Replacing with BladeCN version.');
             }
             File::ensureDirectoryExists(dirname($destinationCss));
             File::copy($sourceCss, $destinationCss);
@@ -402,7 +402,7 @@ class InstallEvolveUICommand extends Command
         // Install JS (replace if exists)
         if (File::exists($sourceJs)) {
             if (File::exists($destinationJs)) {
-                $this->warn('   ⚠️  resources/js/app.js already exists. Replacing with EvolveUI version.');
+                $this->warn('   ⚠️  resources/js/app.js already exists. Replacing with BladeCN version.');
             }
             File::ensureDirectoryExists(dirname($destinationJs));
             File::copy($sourceJs, $destinationJs);

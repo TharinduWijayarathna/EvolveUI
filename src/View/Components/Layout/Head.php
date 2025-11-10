@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\View\Components\Layout;
+namespace BladeCN\BladeCN\View\Components\Layout;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -23,7 +23,7 @@ class Head extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('evolveui::components.layout.head');
+        return view('bladecn::components.layout.head');
     }
 
     /**

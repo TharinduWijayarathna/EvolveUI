@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\View\Components\Layout;
+namespace BladeCN\BladeCN\View\Components\Layout;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -21,6 +21,6 @@ class AppSidebar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('evolveui::components.layout.app-sidebar');
+        return view('bladecn::components.layout.app-sidebar');
     }
 }

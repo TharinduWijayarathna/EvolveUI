@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\Http\Controllers\Auth;
+namespace BladeCN\BladeCN\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +13,7 @@ class AuthenticatedSessionController
      */
     public function create()
     {
-        return view('evolveui::auth.login');
+        return view('bladecn::auth.login');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\Http\Controllers\Auth;
+namespace BladeCN\BladeCN\Http\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -16,7 +16,7 @@ class RegisteredUserController
      */
     public function create()
     {
-        return view('evolveui::auth.register');
+        return view('bladecn::auth.register');
     }
 
     /**

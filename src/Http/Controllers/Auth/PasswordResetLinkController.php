@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\Http\Controllers\Auth;
+namespace BladeCN\BladeCN\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -13,7 +13,7 @@ class PasswordResetLinkController
      */
     public function create()
     {
-        return view('evolveui::auth.forgot-password');
+        return view('bladecn::auth.forgot-password');
     }
 
     /**

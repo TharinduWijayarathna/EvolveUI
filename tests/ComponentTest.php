@@ -1,10 +1,10 @@
 <?php
 
-namespace EvolveUI\EvolveUI\Tests;
+namespace BladeCN\BladeCN\Tests;
 
-use EvolveUI\EvolveUI\View\Components\Layout\App;
-use EvolveUI\EvolveUI\View\Components\Layout\Auth;
-use EvolveUI\EvolveUI\View\Components\Ui\Button;
+use BladeCN\BladeCN\View\Components\Layout\App;
+use BladeCN\BladeCN\View\Components\Layout\Auth;
+use BladeCN\BladeCN\View\Components\Ui\Button;
 
 it('can render button component', function () {
     $component = new Button;

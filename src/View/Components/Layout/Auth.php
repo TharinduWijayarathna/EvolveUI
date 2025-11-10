@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\View\Components\Layout;
+namespace BladeCN\BladeCN\View\Components\Layout;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -26,6 +26,6 @@ class Auth extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('evolveui::components.layout.auth');
+        return view('bladecn::components.layout.auth');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\View\Components\Ui;
+namespace BladeCN\BladeCN\View\Components\Ui;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -23,7 +23,7 @@ class EmptyHeader extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('evolveui::components.ui.empty-header');
+        return view('bladecn::components.ui.empty-header');
     }
 
     public function emptyHeaderClasses(): string

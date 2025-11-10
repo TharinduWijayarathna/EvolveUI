@@ -1,5 +1,5 @@
 <?php
 
-use EvolveUI\EvolveUI\Tests\TestCase;
+use BladeCN\BladeCN\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

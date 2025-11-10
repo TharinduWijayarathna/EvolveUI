@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\View\Components\Layout;
+namespace BladeCN\BladeCN\View\Components\Layout;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -23,6 +23,6 @@ class AppHeader extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('evolveui::components.layout.app-header');
+        return view('bladecn::components.layout.app-header');
     }
 }

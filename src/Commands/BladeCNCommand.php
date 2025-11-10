@@ -1,14 +1,14 @@
 <?php
 
-namespace EvolveUI\EvolveUI\Commands;
+namespace BladeCN\BladeCN\Commands;
 
 use Illuminate\Console\Command;
 
-class EvolveUICommand extends Command
+class BladeCNCommand extends Command
 {
-    public $signature = 'evolveui';
+    public $signature = 'bladecn';
 
-    public $description = 'EvolveUI command';
+    public $description = 'BladeCN command';
 
     public function handle(): int
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\Http\Controllers;
+namespace BladeCN\BladeCN\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +14,7 @@ class ProfileController
      */
     public function edit(Request $request)
     {
-        return view('evolveui::profile');
+        return view('bladecn::profile');
     }
 
     /**

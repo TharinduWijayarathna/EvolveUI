@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\View\Components\Ui;
+namespace BladeCN\BladeCN\View\Components\Ui;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -23,7 +23,7 @@ class SheetTrigger extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('evolveui::components.ui.sheet-trigger');
+        return view('bladecn::components.ui.sheet-trigger');
     }
 
     /**

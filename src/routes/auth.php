@@ -1,10 +1,10 @@
 <?php
 
-use EvolveUI\EvolveUI\Http\Controllers\Auth\AuthenticatedSessionController;
-use EvolveUI\EvolveUI\Http\Controllers\Auth\NewPasswordController;
-use EvolveUI\EvolveUI\Http\Controllers\Auth\PasswordResetLinkController;
-use EvolveUI\EvolveUI\Http\Controllers\Auth\RegisteredUserController;
-use EvolveUI\EvolveUI\Http\Controllers\ProfileController;
+use BladeCN\BladeCN\Http\Controllers\Auth\AuthenticatedSessionController;
+use BladeCN\BladeCN\Http\Controllers\Auth\NewPasswordController;
+use BladeCN\BladeCN\Http\Controllers\Auth\PasswordResetLinkController;
+use BladeCN\BladeCN\Http\Controllers\Auth\RegisteredUserController;
+use BladeCN\BladeCN\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {

@@ -1,17 +1,17 @@
 {
-    "name": "evolveui/evolveui",
+    "name": "bladecn/bladecn",
     "description": "A Laravel UI component package",
     "keywords": [
-        "evolveui",
+        "bladecn",
         "laravel",
-        "evolveui"
+        "bladecn"
     ],
-    "homepage": "https://github.com/evolveui/evolveui",
+    "homepage": "https://github.com/bladecn/bladecn",
     "license": "MIT",
     "authors": [
         {
-            "name": "EvolveUI Team",
-            "email": "team@evolveui.com",
+            "name": "BladeCN Team",
+            "email": "team@bladecn.com",
             "role": "Developer"
         }
     ],
@@ -35,8 +35,8 @@
     },
     "autoload": {
         "psr-4": {
-            "EvolveUI\\EvolveUI\\": "src/",
-            "EvolveUI\\EvolveUI\\Database\\Factories\\": "database/factories/"
+            "BladeCN\\BladeCN\\": "src/",
+            "BladeCN\\BladeCN\\Database\\Factories\\": "database/factories/"
         },
         "files": [
             "src/helpers.php"
@@ -44,7 +44,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "EvolveUI\\EvolveUI\\Tests\\": "tests/",
+            "BladeCN\\BladeCN\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -66,10 +66,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "EvolveUI\\EvolveUI\\EvolveUIServiceProvider"
+                "BladeCN\\BladeCN\\BladeCNServiceProvider"
             ],
             "aliases": {
-                "EvolveUI": "EvolveUI\\EvolveUI\\Facades\\EvolveUI"
+                "BladeCN": "BladeCN\\BladeCN\\Facades\\BladeCN"
             }
         }
     },

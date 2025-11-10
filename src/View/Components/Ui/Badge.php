@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\View\Components\Ui;
+namespace BladeCN\BladeCN\View\Components\Ui;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -34,7 +34,7 @@ class Badge extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('evolveui::components.ui.badge');
+        return view('bladecn::components.ui.badge');
     }
 
     public function badgeClasses(): string

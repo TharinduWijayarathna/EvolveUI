@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolveUI\EvolveUI\View\Components\Ui;
+namespace BladeCN\BladeCN\View\Components\Ui;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -23,7 +23,7 @@ class Textarea extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('evolveui::components.ui.textarea');
+        return view('bladecn::components.ui.textarea');
     }
 
     public function textareaClasses(): string
