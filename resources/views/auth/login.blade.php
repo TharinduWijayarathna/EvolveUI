@@ -1,4 +1,4 @@
-<x-layout.auth title="Welcome back" description="Sign in to your account to continue">
+<x-layout.auth title="Welcome back" description="Sign in to your account to continue" backgroundImage="https://source.unsplash.com/1920x1080/?login,technology,workspace">
     <form method="POST" action="{{ route('login') }}" class="space-y-4">
         @csrf
 

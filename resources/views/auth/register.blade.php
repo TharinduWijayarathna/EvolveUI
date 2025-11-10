@@ -1,4 +1,4 @@
-<x-layout.auth title="Create an account" description="Enter your information to get started">
+<x-layout.auth title="Create an account" description="Enter your information to get started" backgroundImage="https://source.unsplash.com/1920x1080/?register,startup,innovation">
     <form method="POST" action="{{ route('register') }}" class="space-y-4">
         @csrf
 

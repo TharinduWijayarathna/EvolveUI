@@ -9,11 +9,16 @@ use Illuminate\View\Component;
 class Auth extends Component
 {
     /**
+     * The background image URL for the auth page.
+     */
+    public ?string $backgroundImage;
+
+    /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(?string $backgroundImage = null)
     {
-        //
+        $this->backgroundImage = $backgroundImage;
     }
 
     /**

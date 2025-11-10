@@ -2,6 +2,7 @@
     'title' => null,
     'description' => null,
     'appearance' => 'system',
+    'backgroundImage' => null,
 ])
 
 <!DOCTYPE html>
@@ -76,7 +77,7 @@
         class="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
         {{-- Left Side: background + logo --}}
         <div class="relative hidden h-full flex-col bg-[#0E121B] p-10 text-white lg:flex dark:border-r">
-            <img src="{{ asset('images/auth/auth-bg.webp') }}" alt="background-image"
+            <img src="{{ $backgroundImage ?? 'https://source.unsplash.com/1920x1080/?technology,workspace' }}" alt="background-image"
                 class="pointer-events-none absolute inset-0 h-full w-full object-cover" />
             <a href="{{ route('home') }}" class="relative z-20 flex items-center text-lg font-medium">
                 <x-icons.app-logo />
